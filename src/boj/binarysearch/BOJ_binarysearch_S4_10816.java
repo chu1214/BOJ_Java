@@ -5,6 +5,10 @@ import java.util.StringTokenizer;
 
 public class BOJ_binarysearch_S4_10816 {
 
+	/* 이분탐색 방식도 가능
+	 * min{<=, >}, max{<, >=} 두 가지 메서드를 활용 
+	 * max - min 을 하게 되면 해당 수의 개수를 출력할 수 있음
+	 */
 	public static void main(String[] args) throws IOException {
 		BufferedReader br = new BufferedReader(new InputStreamReader(System.in));
 		StringTokenizer st;
