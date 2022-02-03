@@ -2,7 +2,7 @@ package swea.D2;
 
 import java.util.Scanner;
 
-public class SWEA_str_D2_1974 {
+public class SWEA_D2_1974_스도쿠검증 {
 
 	public static void main(String[] args) {
 		Scanner sc = new Scanner(System.in);
