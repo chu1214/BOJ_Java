@@ -1,4 +1,4 @@
-package boj.search;
+package boj.binarysearch;
 
 import java.io.BufferedReader;
 import java.io.BufferedWriter;
@@ -10,7 +10,7 @@ import java.util.Collections;
 import java.util.List;
 import java.util.StringTokenizer;
 
-public class BOJ_search_S4_1920 {
+public class BOJ_binarysearch_S4_1920 {
 
 	public static void main(String[] args) throws NumberFormatException, IOException {
 		BufferedReader br = new BufferedReader(new InputStreamReader(System.in));
