@@ -42,7 +42,7 @@ public class BOJ_dp_S3_1463_bfsVer {
 			else {
 				return curLevel;
 			}
-		}
+		} 
 		return -1;
 	}
 
