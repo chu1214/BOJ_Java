@@ -64,6 +64,5 @@ public class BOJ_recursive_S1_1497 {
 				music[i]--;
 			}
 		}
-
 	}
 }

@@ -27,7 +27,7 @@ public class BOJ_stack_G5_2493 {
 			}
 			if(ans.isEmpty()) {
 				sb.append(0 + " ");
-			}	
+			}
 			ans.push(new int[] {num, i + 1});
 		}		
 		System.out.println(sb.toString());
