@@ -16,7 +16,6 @@ public class BOJ_simul_G5_16927 {
 		int R = Integer.parseInt(st.nextToken());
 		int G = Math.min(N, M) / 2;
 		
-		
 		int[][] arr = new int[N][M];
 		
 		for(int i = 0; i < N; i++) {
@@ -26,10 +25,11 @@ public class BOJ_simul_G5_16927 {
 			}
 		}
 		
-		for(int i = 0; i < R; i++) {
-			for(int j = 0; j < G; j++) {
-				int r = j;
-				int c = j;
+		for(int i = 0; i < G; i++) {
+			int nR = R % (((N - i * 2 - 1) + (M - i * 2 - 1)) * 2);
+			for(int j = 0; j < nR; j++) {
+				int r = i;
+				int c = i;
 				
 				int temp = arr[r][c];
 				
@@ -39,7 +39,7 @@ public class BOJ_simul_G5_16927 {
 					int nr = r - deltas[d][0];
 					int nc = c - deltas[d][1];
 					
-					if(nr >= j && nc >= j && nr < N - j && nc < M - j) {
+					if(nr >= i && nc >= i && nr < N - i && nc < M - i) {
 						arr[r][c] = arr[nr][nc];
 						r = nr;
 						c = nc;
@@ -48,7 +48,7 @@ public class BOJ_simul_G5_16927 {
 						d++;
 					}
 				}
-				arr[j+1][j] = temp;
+				arr[i+1][i] = temp;
 			}
 		}
 		for(int i = 0; i < N; i++) {
