@@ -29,7 +29,15 @@ public class BOJ_recursive_G5_9663 {
 	
 	public static void N_Queen(int cnt) {
 		if(cnt == N) {
-			nQueen++;
+			if(check()) {
+				nQueen++;
+				for(int i = 0; i < N; i++) {
+					for(int j = 0; j < N; j++) {
+						System.out.print(Board[i][j] + " ");
+					}
+					System.out.println();
+				}
+			}
 			return;
 		}
 		
