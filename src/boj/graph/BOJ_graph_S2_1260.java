@@ -53,7 +53,7 @@ public class BOJ_graph_S2_1260 {
 		M = Integer.parseInt(st.nextToken());
 		V = Integer.parseInt(st.nextToken());
 		
-		graph = new boolean[N+1][M+1];
+		graph = new boolean[N+1][N+1];
 		isVisited = new boolean[N+1];
 				
 		
