@@ -6,24 +6,21 @@ import java.util.StringTokenizer;
 public class BOJ_recursive_S1_18428 {
 	static int N;
 	static char[][] corridor;
-	static boolean[][] isUsed;
 	static int[][] deltas = { { 1, 0 }, { -1, 0 }, { 0, -1 }, { 0, 1 } };
-	static boolean yes = false;
+	static String ans = "NO";
 	
 	public static void hide(int cnt) {
 		if (cnt == 3) {
-			if (isCheck()) yes = true;
+			if (isCheck()) ans = "YES";
 			return;
 		}
 
 		for (int i = 0; i < N; i++) {
 			for (int j = 0; j < N; j++) {
-				if (isUsed[i][j] == false) {
+				if (corridor[i][j] == 'X') {
 					corridor[i][j] = 'O';
-					isUsed[i][j] = true;
 					hide(cnt + 1);
 					corridor[i][j] = 'X';
-					isUsed[i][j] = false;
 				}
 			}
 		}
@@ -45,9 +42,9 @@ public class BOJ_recursive_S1_18428 {
 								break;
 							if (corridor[nr][nc] == 'S')
 								return false;
-							else if (corridor[nr][nc] == 'O')
+							if (corridor[nr][nc] == 'O')
 								break;
-							else if (corridor[nr][nc] == 'X' || corridor[nr][nc] == 'T') {
+							if (corridor[nr][nc] == 'X' || corridor[nr][nc] == 'T') {
 								tempR = nr;
 								tempC = nc;
 							}
@@ -69,19 +66,15 @@ public class BOJ_recursive_S1_18428 {
 
 		N = Integer.parseInt(br.readLine());
 		corridor = new char[N][N];
-		isUsed = new boolean[N][N];
-
+		
 		for (int i = 0; i < N; i++) {
 			st = new StringTokenizer(br.readLine());
 			for (int j = 0; j < N; j++) {
 				corridor[i][j] = st.nextToken().charAt(0);
-				if (corridor[i][j] == 'T' || corridor[i][j] == 'S')
-					isUsed[i][j] = true;
 			}
 		}
 		hide(0);
 		
-		if(yes) System.out.println("YES");
-		else System.out.println("NO");
+		System.out.println(ans);
 	}
 }
