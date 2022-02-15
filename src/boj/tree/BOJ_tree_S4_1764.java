@@ -27,6 +27,7 @@ public class BOJ_tree_S4_1764 {
 				list.add(name);
 			}
 		}
+		
 		Collections.sort(list);
 		sb.append(list.size() + "\n");
 		for(int i = 0; i < list.size(); i++) {
