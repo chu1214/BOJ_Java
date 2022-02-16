@@ -18,12 +18,12 @@ public class SWEA_4012_요리사 {
 			int tasteB = 0;
 			
 			for(int i = 0; i < N; i++) {
-				for(int j = 0; j < N; j++) {
+				for(int j = i + 1; j < N; j++) {
 					if(material[i] && material[j]) {
-						tasteA += synergy[i][j];
+						tasteA += synergy[i][j] + synergy[j][i];
 					}
 					if(!material[i] && !material[j]) {
-						tasteB += synergy[i][j];
+						tasteB += synergy[i][j] + synergy[j][i];
 					}
 				}
 			}
