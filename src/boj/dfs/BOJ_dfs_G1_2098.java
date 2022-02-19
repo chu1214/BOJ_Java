@@ -11,9 +11,7 @@ public class BOJ_dfs_G1_2098 {
 	static int[][] W, dp;
 	static final int MAX = 16000001;
 	
-	public static int dfs(int city, int visited) {
-		
-
+	public static int dfs(int city, int visited) {	
 		if(visited == (1 << N) - 1) {
 			if(W[city][0] == 0) return MAX;
 			return W[city][0];
