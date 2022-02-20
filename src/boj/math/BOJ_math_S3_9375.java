@@ -1,11 +1,11 @@
-package boj.recursive;
+package boj.math;
 
 import java.io.*;
 import java.util.HashMap;
 import java.util.Map.Entry;
 import java.util.StringTokenizer;
 
-public class BOJ_recursive_S3_9375 {
+public class BOJ_math_S3_9375 {
 
 	public static void main(String[] args) throws NumberFormatException, IOException {
 		BufferedReader br = new BufferedReader(new InputStreamReader(System.in));
