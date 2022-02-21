@@ -1,7 +1,8 @@
+package boj.bfs;
 import java.io.*;
 import java.util.*;
 
-public class BOJ__G4_9019 {
+public class BOJ_bfs_G4_9019 {
 
 	static int T, A, B;
 	static boolean visited[];
