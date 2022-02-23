@@ -17,7 +17,6 @@ public class BOJ_math_B2_2292 {
 		while(true) {
 			sum += 6 * i; 
 			i++;
-			System.out.println(sum + " " + i);
 			if(N < sum + 1) break;
 		}
 		System.out.println(i);
