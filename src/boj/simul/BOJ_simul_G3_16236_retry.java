@@ -53,23 +53,30 @@ public class BOJ_simul_G3_16236_retry {
 			boolean[][] visited = new boolean[N][N];
 			q.offer(bs);
 			visited[bs.r][bs.c] = true;
+			boolean flag = false;
 
 			while (!q.isEmpty()) {
-				Shark cur = q.poll();
-				for (int d = 0; d < 4; d++) {
-					int nr = cur.r + deltas[d][0];
-					int nc = cur.c + deltas[d][1];
-					if (isIn(nr, nc) && !visited[nr][nc]) {
-						if (space[nr][nc] > 0 && space[nr][nc] < cur.size) {
-							q.offer(new Shark(nr, nc, cur.size, cur.eat, cur.distance + 1));
-							list.add(new Fish(nr, nc, cur.distance + 1));
-							visited[nr][nc] = true;
-						} else if (space[nr][nc] == 0 || space[nr][nc] == cur.size) {
-							q.offer(new Shark(nr, nc, cur.size, cur.eat, cur.distance + 1));
-							visited[nr][nc] = true;
+				int size = q.size();
+				
+				while (size-- > 0) {
+					Shark cur = q.poll();
+					for (int d = 0; d < 4; d++) {
+						int nr = cur.r + deltas[d][0];
+						int nc = cur.c + deltas[d][1];
+						if (isIn(nr, nc) && !visited[nr][nc]) {
+							if (space[nr][nc] > 0 && space[nr][nc] < cur.size) {
+								q.offer(new Shark(nr, nc, cur.size, cur.eat, cur.distance + 1));
+								list.add(new Fish(nr, nc, cur.distance + 1));
+								visited[nr][nc] = true;
+								flag = true;
+							} else if (space[nr][nc] == 0 || space[nr][nc] == cur.size) {
+								q.offer(new Shark(nr, nc, cur.size, cur.eat, cur.distance + 1));
+								visited[nr][nc] = true;
+							}
 						}
 					}
 				}
+				if(flag) break;
 			}
 
 			if (list.size() == 0) {
