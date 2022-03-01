@@ -1,4 +1,4 @@
-package boj.dfs;
+package boj.bfs;
 
 import java.io.BufferedReader;
 import java.io.IOException;
@@ -7,7 +7,7 @@ import java.util.ArrayDeque;
 import java.util.Queue;
 import java.util.StringTokenizer;
 
-public class BOJ_dfs_S1_2178 {
+public class BOJ_bfs_S1_2178 {
 
 	static int N, M, ans = 1;
 	static int[][] maze;
