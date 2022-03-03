@@ -13,10 +13,10 @@ public class BOJ_bfs_P5_20304 {
 	public static void main(String[] args) throws NumberFormatException, IOException {
 		BufferedReader br = new BufferedReader(new InputStreamReader(System.in));
 		StringBuilder sb = new StringBuilder();
-		StringTokenizer st;
+		StringTokenizer st = new StringTokenizer(br.readLine());
 
-		int N = Integer.parseInt(br.readLine());
-		int M = Integer.parseInt(br.readLine());
+		int N = Integer.parseInt(st.nextToken());
+		int M = Integer.parseInt(st.nextToken());
 		int ans = 0;
 		
 		Deque<Integer> dq = new ArrayDeque<Integer>();
@@ -27,19 +27,19 @@ public class BOJ_bfs_P5_20304 {
 		st = new StringTokenizer(br.readLine());
 		
 		for(int i = 1; i <= M; i++) {
-			int x = Integer.parseInt(st.nextToken());
-			arr[x] = 0;
-			dq.offerLast(x);
+			int a = Integer.parseInt(st.nextToken());
+			arr[a] = 0;
+			dq.offerLast(a);
 		}
 		
 		while(!dq.isEmpty()) {
-			int x = dq.pollFirst();
+			int a = dq.pollFirst();
 			for(int i = 0; i < 20; i++) {
-				int nx = x^(1 << i);
-				if(nx > N || arr[nx] != Integer.MIN_VALUE) continue;
-				arr[nx] = arr[x] + 1;
-				dq.offerLast(nx);
-				ans = Math.max(ans, arr[nx]);
+				int next = a^(1 << i);
+				if(next > N || arr[next] != Integer.MIN_VALUE) continue;
+				arr[next] = arr[next] + 1;
+				dq.offerLast(next);
+				ans = Math.max(ans, arr[next]);
 			}
 		}
 		
