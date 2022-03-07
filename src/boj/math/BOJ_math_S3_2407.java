@@ -6,7 +6,7 @@ import java.io.InputStreamReader;
 import java.math.BigDecimal;
 import java.util.StringTokenizer;
 
-public class BOJ_Math_S3_2407 {
+public class BOJ_math_S3_2407 {
 
 	public static BigDecimal combination(int N, int M) {
 		BigDecimal ans = new BigDecimal(1);
