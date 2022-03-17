@@ -12,7 +12,6 @@ public class BOJ_dc_S4_11582 {
 	static int[] chicken;
 
 	public static void sortChicken(int num) {
-
 		if (K == 1) {
 			Arrays.sort(chicken);
 			return;
@@ -21,6 +20,7 @@ public class BOJ_dc_S4_11582 {
 		for (int i = 0; i <= N - N / num; i += N / num) {
 			Arrays.sort(chicken, i, i + N / num);
 		}
+
 		if (K == num)
 			return;
 		sortChicken(num / 2);
