@@ -21,7 +21,7 @@ public class BOJ_greedy_G4_2374 {
 		long max = A[0];
 
 		for (int i = 1; i < N; i++) {
-			A[i] = Integer.parseInt(br.readLine());
+			A[i] = Long.parseLong(br.readLine());
 			if (cur > A[i]) {
 				sum += cur - A[i];
 			} else if (max < A[i]) {
