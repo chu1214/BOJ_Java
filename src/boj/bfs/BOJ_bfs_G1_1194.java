@@ -30,7 +30,7 @@ public class BOJ_bfs_G1_1194 {
 	public static void bfs(int sr, int sc) {
 		Queue<MS> q = new ArrayDeque<>();
 		q.offer(new MS(sr, sc, 0));
-		cnt = -1;
+		cnt = 0;
 
 		while (!q.isEmpty()) {
 			int size = q.size();
@@ -95,7 +95,7 @@ public class BOJ_bfs_G1_1194 {
 		bfs(sr, sc);
 
 		if (find) {
-			System.out.println(cnt + 1);
+			System.out.println(cnt);
 		} else {
 			System.out.println(-1);
 		}
