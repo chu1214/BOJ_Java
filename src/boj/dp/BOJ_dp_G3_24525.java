@@ -10,39 +10,49 @@ public class BOJ_dp_G3_24525 {
 		BufferedReader br = new BufferedReader(new InputStreamReader(System.in));
 		String str = br.readLine();
 		char[] arr = new char[str.length() + 1];
+		int[] dp = new int[str.length() + 1];
 
-		for (int i = 1; i <= str.length(); i++) {
-			arr[i] = str.charAt(i - 1);
-		}
-		int left = 1;
-		int right = 0;
-		int sCnt = 0;
-		int kCnt = 0;
-		int max = -1;
+		int min = 200001;
+		int max = -100001;
+		int ans = -1;
+		int sum = 0;
 
-		while (left <= str.length() || right <= str.length()) {
-			if (sCnt * 2 - kCnt >= 4 || kCnt - sCnt * 2 >= 3) {
-				left++;
-				if (left > str.length())
-					break;
-				if (arr[left] == 'S')
-					sCnt--;
-				if (arr[left] == 'K')
-					kCnt--;
-			} else {
-				right++;
-				if (right > str.length())
-					break;
-				if (arr[right] == 'S')
-					sCnt++;
-				if (arr[right] == 'K')
-					kCnt++;
-			}
-			if (sCnt * 2 == kCnt && sCnt != 0 && kCnt != 0) {
-				max = right - left + 1;
-			}
+		for (int i = 0; i < str.length(); i++) {
+			arr[i] = str.charAt(i);
+			if (arr[i] == 'S')
+				sum += 2;
+			else if (arr[i] == 'K')
+				sum += -1;
+
+			if (sum > max)
+				max = sum;
+			if (sum < min)
+				min = sum;
+			dp[i + 1] = sum;
 		}
 
-		System.out.println(max);
+		if (min > 0)
+			min = 0;
+		int[][] check = new int[max - min + 2][3];
+
+		if (str.length() >= 3) {
+			for (int i = 0; i <= str.length(); i++) {
+				int cur = dp[i] - min;
+				if (check[cur][2] == 0) {
+					check[cur][0] = i;
+					check[cur][2] = 1;
+				} else {
+					check[cur][1] = i;
+					if (cur != dp[i - 1] - min) {
+						check[cur][2] = 2;
+					}
+					if (check[cur][2] == 2) {
+						ans = Math.max(ans, check[cur][1] - check[cur][0]);
+					}
+				}
+			}
+		}
+
+		System.out.println(ans);
 	}
 }
