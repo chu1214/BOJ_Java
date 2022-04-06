@@ -7,49 +7,24 @@ import java.io.InputStreamReader;
 public class BOJ_simul_G4_2239 {
 
 	static int[][] sudoku = new int[9][9];
-	static int[] used = new int[10];
+	static int[][] use = new int[3][9];
 	static boolean complete = false;
 	static StringBuilder sb = new StringBuilder();
 
-	public static boolean areaChk(int r, int c, int k) {
-		int sr = (r / 3) * 3;
-		int sc = (c / 3) * 3;
-
-		for (int i = sr; i < sr + 3; i++) {
-			for (int j = sc; j < sc + 3; j++) {
-				if (sudoku[i][j] == k)
-					return false;
-			}
-		}
-		return true;
-	}
-
-	public static boolean colChk(int c, int k) {
-		for (int r = 0; r < 9; r++) {
-			if (sudoku[r][c] == k)
-				return false;
-		}
-		return true;
-	}
-
-	public static boolean rowChk(int r, int k) {
-		for (int c = 0; c < 9; c++) {
-			if (sudoku[r][c] == k)
-				return false;
-		}
-		return true;
-	}
-
 	public static boolean check(int r, int c, int k) {
-		if (rowChk(r, k) && colChk(c, k) && areaChk(r, c, k))
-			return true;
-		return false;
+		int shift = 1 << k;
+		if ((use[0][r] & shift) > 0) {
+			return false;
+		} else if ((use[1][c] & shift) > 0) {
+			return false;
+		} else if ((use[2][r / 3 * 3 + c / 3] & shift) > 0) {
+			return false;
+		}
+
+		return true;
 	}
 
 	public static void complete(int r, int c) {
-		if (complete)
-			return;
-
 		if (c == 9) {
 			r++;
 			c = 0;
@@ -72,12 +47,19 @@ public class BOJ_simul_G4_2239 {
 
 		else {
 			for (int k = 1; k <= 9; k++) {
-				if (used[k] != 9 && check(r, c, k)) {
-					used[k]++;
+				if (check(r, c, k)) {
+					int shift = 1 << k;
+					use[0][r] |= shift;
+					use[1][c] |= shift;
+					use[2][r / 3 * 3 + c / 3] |= shift;
 					sudoku[r][c] = k;
 					complete(r, c + 1);
+					if (complete)
+						return;
 					sudoku[r][c] = 0;
-					used[k]--;
+					use[0][r] &= ~shift;
+					use[1][c] &= ~shift;
+					use[2][r / 3 * 3 + c / 3] &= ~shift;
 				}
 			}
 		}
@@ -92,7 +74,10 @@ public class BOJ_simul_G4_2239 {
 			for (int j = 0; j < 9; j++) {
 				sudoku[i][j] = str.charAt(j) - '0';
 				if (sudoku[i][j] >= 1 && sudoku[i][j] <= 9) {
-					used[sudoku[i][j]]++;
+					int shift = 1 << sudoku[i][j];
+					use[0][i] |= shift;
+					use[1][j] |= shift;
+					use[2][i / 3 * 3 + j / 3] |= shift;
 				}
 			}
 		}
