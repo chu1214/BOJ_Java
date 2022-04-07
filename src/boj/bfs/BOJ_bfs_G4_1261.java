@@ -3,7 +3,7 @@ package boj.bfs;
 import java.io.BufferedReader;
 import java.io.IOException;
 import java.io.InputStreamReader;
-import java.util.LinkedList;
+import java.util.ArrayDeque;
 import java.util.StringTokenizer;
 
 public class BOJ_bfs_G4_1261 {
@@ -13,7 +13,7 @@ public class BOJ_bfs_G4_1261 {
 	static int[] dc = { 0, 0, -1, 1 };
 
 	public static void bfs(int startR, int startC) {
-		LinkedList<int[]> list = new LinkedList<>();
+		ArrayDeque<int[]> list = new ArrayDeque<>();
 		boolean[][] visited = new boolean[N][M];
 		list.addFirst(new int[] { startR, startC, 0 });
 		visited[startR][startC] = true;
