@@ -1,6 +1,8 @@
 package boj.simul;
 
-import java.io.*;
+import java.io.BufferedReader;
+import java.io.IOException;
+import java.io.InputStreamReader;
 import java.util.StringTokenizer;
 
 public class BOJ_simul_S1_2564 {
@@ -15,52 +17,52 @@ public class BOJ_simul_S1_2564 {
 			int first = 0, second = 0;
 			switch (D[0]) {
 			case 1:
-				if(shop[i][0] == 1) {
+				if (shop[i][0] == 1) {
 					ans += Math.abs(shop[i][1] - D[1]);
-				} else if(shop[i][0] == 2 ) {
+				} else if (shop[i][0] == 2) {
 					first = N + (M - shop[i][1]) + (M - D[1]);
 					second = N + D[1] + shop[i][1];
 					ans += first > second ? second : first;
-				} else if(shop[i][0] == 3 ) {
+				} else if (shop[i][0] == 3) {
 					ans += D[1] + shop[i][1];
 				} else {
 					ans += (M - D[1]) + shop[i][1];
 				}
 				break;
 			case 2:
-				if(shop[i][0] == 1) {
+				if (shop[i][0] == 1) {
 					first = N + (M - shop[i][1]) + (M - D[1]);
 					second = N + D[1] + shop[i][1];
 					ans += first > second ? second : first;
-				} else if(shop[i][0] == 2 ) {
+				} else if (shop[i][0] == 2) {
 					ans += Math.abs(shop[i][1] - D[1]);
-				} else if(shop[i][0] == 3 ) {
+				} else if (shop[i][0] == 3) {
 					ans += D[1] + (N - shop[i][1]);
 				} else {
 					ans += (M - D[1]) + (N - shop[i][1]);
 				}
 				break;
 			case 3:
-				if(shop[i][0] == 1) {
-					ans += D[1] + shop[i][1]; 
-				} else if(shop[i][0] == 2 ) {
+				if (shop[i][0] == 1) {
+					ans += D[1] + shop[i][1];
+				} else if (shop[i][0] == 2) {
 					ans += (N - D[1]) + shop[i][1];
-				} else if(shop[i][0] == 3 ) {
+				} else if (shop[i][0] == 3) {
 					ans += Math.abs(shop[i][1] - D[1]);
 				} else {
-					first = M + shop[i][1] + (N - D[1]);
-					second = M + D[1] + (N - shop[i][1]);
+					first = M + D[1] + shop[i][1];
+					second = M + (N - D[1]) + (N - shop[i][1]);
 					ans += first > second ? second : first;
 				}
 				break;
 			case 4:
-				if(shop[i][0] == 1) {
-					ans += D[1] + (M - shop[i][1]); 
-				} else if(shop[i][0] == 2 ) {
+				if (shop[i][0] == 1) {
+					ans += D[1] + (M - shop[i][1]);
+				} else if (shop[i][0] == 2) {
 					ans += (N - D[1]) + (M - shop[i][1]);
-				} else if(shop[i][0] == 3 ) {
-					first = M + shop[i][1] + (N - D[1]);
-					second = M + D[1] + (N - shop[i][1]);
+				} else if (shop[i][0] == 3) {
+					first = M + D[1] + shop[i][1];
+					second = M + (N - D[1]) + (N - shop[i][1]);
 					ans += first > second ? second : first;
 				} else {
 					ans += Math.abs(shop[i][1] - D[1]);
