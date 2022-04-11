@@ -8,7 +8,7 @@ import java.util.Arrays;
 import java.util.PriorityQueue;
 import java.util.StringTokenizer;
 
-public class BOJ_djikstra_G4_4485 {
+public class BOJ_dijkstra_G4_4485 {
 
 	static class Edge implements Comparable<Edge> {
 		int r, c;
