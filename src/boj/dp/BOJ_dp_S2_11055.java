@@ -5,29 +5,34 @@ import java.io.IOException;
 import java.io.InputStreamReader;
 import java.util.StringTokenizer;
 
-public class BOJ_dp_S3_14501 {
+public class BOJ_dp_S2_11055 {
 
 	public static void main(String[] args) throws NumberFormatException, IOException {
 		BufferedReader br = new BufferedReader(new InputStreamReader(System.in));
 		StringTokenizer st;
 
 		int N = Integer.parseInt(br.readLine());
-		int[] dp = new int[N + 1];
-		int ans = 0;
+		int[] arr = new int[N + 1];
+		int max = 0;
+
+		st = new StringTokenizer(br.readLine());
+		for (int i = 1; i <= N; i++) {
+			arr[i] = Integer.parseInt(st.nextToken());
+			max = Math.max(max, arr[i]);
+		}
+
+		int[] dp = new int[max + 1];
 
 		for (int i = 1; i <= N; i++) {
-			st = new StringTokenizer(br.readLine());
-			int day = Integer.parseInt(st.nextToken());
-			int pay = Integer.parseInt(st.nextToken());
-			if (dp[i] < dp[i - 1])
-				dp[i] = dp[i - 1];
-			if (N >= i + day - 1 && dp[i + day - 1] < dp[i - 1] + pay) {
-				dp[i + day - 1] = dp[i - 1] + pay;
+			int num = arr[i];
+			for (int j = 0; j < num; j++) {
+				dp[num] = Math.max(dp[num], dp[j] + num);
 			}
 		}
-		for (int i = 1; i <= N; i++) {
-			if (dp[i] > ans)
-				ans = dp[i];
+
+		int ans = 0;
+		for (int i = 1; i <= max; i++) {
+			ans = Math.max(ans, dp[i]);
 		}
 		System.out.println(ans);
 	}
