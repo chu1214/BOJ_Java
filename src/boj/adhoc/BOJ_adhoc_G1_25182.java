@@ -1,8 +1,9 @@
+package boj.adhoc;
 import java.io.BufferedReader;
 import java.io.IOException;
 import java.io.InputStreamReader;
 
-public class BOJ_청정수컵_H번 {
+public class BOJ_adhoc_G1_25182 {
 
 	static final int MOD = 1000000007;
 
