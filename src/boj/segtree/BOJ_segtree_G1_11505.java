@@ -5,12 +5,14 @@ import java.io.IOException;
 import java.io.InputStreamReader;
 import java.util.StringTokenizer;
 
-public class boj_segtree_G1_2042 {
+public class BOJ_segtree_G1_11505 {
 
 	static int N, M, K;
+	static final long MOD = 1000000007;
+	static long[] arr;
 
 	static class SegmentTree {
-		private long[] tree;
+		long[] tree;
 
 		SegmentTree(int n) {
 			tree = new long[4 * n];
@@ -21,30 +23,31 @@ public class boj_segtree_G1_2042 {
 				return tree[node] = arr[start];
 			} else {
 				return tree[node] = init(arr, node * 2, start, (start + end) / 2)
-						+ init(arr, node * 2 + 1, (start + end) / 2 + 1, end);
+						* init(arr, node * 2 + 1, (start + end) / 2 + 1, end) % MOD;
 			}
 		}
 
-		long sum(int node, int start, int end, int left, long right) {
-			if (end < left || right < start) {
-				return 0;
+		long mul(int node, int start, int end, int left, int right) {
+			if (end < left || start > right) {
+				return 1;
 			} else if (left <= start && end <= right) {
 				return tree[node];
 			} else {
-				return sum(node * 2, start, (start + end) / 2, left, right)
-						+ sum(node * 2 + 1, (start + end) / 2 + 1, end, left, right);
+				return mul(node * 2, start, (start + end) / 2, left, right)
+						* mul(node * 2 + 1, (start + end) / 2 + 1, end, left, right) % MOD;
 			}
 		}
 
-		void update(int node, int start, int end, int index, long dif) {
-			if (end < index || start > index) {
-				return;
+		long update(int node, int start, int end, int index) {
+			if (index < start || index > end) {
+				return tree[node];
 			} else {
-				tree[node] = tree[node] + dif;
+				if (start == end) {
+					return tree[node] = arr[start];
 
-				if (start != end) {
-					update(node * 2, start, (start + end) / 2, index, dif);
-					update(node * 2 + 1, (start + end) / 2 + 1, end, index, dif);
+				} else {
+					return tree[node] = update(node * 2, start, (start + end) / 2, index)
+							* update(node * 2 + 1, (start + end) / 2 + 1, end, index) % MOD;
 				}
 			}
 		}
@@ -59,28 +62,27 @@ public class boj_segtree_G1_2042 {
 		M = Integer.parseInt(st.nextToken());
 		K = Integer.parseInt(st.nextToken());
 
-		SegmentTree segtree = new SegmentTree(N + 1);
+		arr = new long[N + 1];
 
-		long[] arr = new long[N + 1];
 		for (int i = 1; i <= N; i++) {
-			long num = Long.parseLong(br.readLine());
-			arr[i] = num;
+			arr[i] = Integer.parseInt(br.readLine());
 		}
 
-		segtree.init(arr, 1, 1, N);
+		SegmentTree segTree = new SegmentTree(N + 1);
+		segTree.init(arr, 1, 1, N);
 
 		for (int i = 0; i < M + K; i++) {
 			st = new StringTokenizer(br.readLine());
+
 			int a = Integer.parseInt(st.nextToken());
 			int b = Integer.parseInt(st.nextToken());
-			long c = Long.parseLong(st.nextToken());
+			int c = Integer.parseInt(st.nextToken());
 
 			if (a == 1) {
-				long dif = c - arr[b];
-				segtree.update(1, 1, N, b, dif);
 				arr[b] = c;
-			} else if (a == 2) {
-				sb.append(segtree.sum(1, 1, N, b, c) + "\n");
+				segTree.update(1, 1, N, b);
+			} else {
+				sb.append(segTree.mul(1, 1, N, b, c) + "\n");
 			}
 		}
 		sb.setLength(sb.length() - 1);
