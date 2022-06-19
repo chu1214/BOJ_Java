@@ -1,11 +1,11 @@
-package boj.segtree;
+package free;
 
 import java.io.BufferedReader;
 import java.io.IOException;
 import java.io.InputStreamReader;
 import java.util.StringTokenizer;
 
-public class BOJ_segtree_G1_2042 {
+public class ForYunha {
 
 	static int N, M, K;
 	static long[] arr;
