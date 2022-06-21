@@ -13,10 +13,10 @@ public class BOJ_segtree_G1_1275 {
 	static class SegmentTree {
 		long[] tree;
 
+		// 생성자 작성
 		SegmentTree(int n) {
 			tree = new long[4 * n];
 		}
-
 
 		long init(long[] arr, int node, int start, int end) {
 			if (start == end) {
