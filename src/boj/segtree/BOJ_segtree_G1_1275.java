@@ -63,12 +63,10 @@ public class BOJ_segtree_G1_1275 {
 
 		arr = new long[N + 1];
 
-
 		st = new StringTokenizer(br.readLine());
 		for (int i = 1; i <= N; i++) {
 			arr[i] = Integer.parseInt(st.nextToken());
 		}
-
 
 		seg.init(arr, 1, 1, N);
 
