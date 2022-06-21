@@ -28,6 +28,7 @@ public class BOJ_segtree_G1_1275 {
 			}
 		}
 
+		// 덧셈 함수 작성
 		long sum(int node, int start, int end, int left, int right) {
 			if (right < start || end < left) {
 				return 0;
