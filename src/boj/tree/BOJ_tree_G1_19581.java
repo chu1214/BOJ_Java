@@ -78,7 +78,7 @@ public class BOJ_tree_G1_19581 {
         int c = dfs(a, b);
 
         visited = new boolean[N+1];
-        int e = dfs(b, a);
+        int d = dfs(b, a);
 
 
         long max = Math.max(dist[a], dist[b]);
