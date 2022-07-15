@@ -7,7 +7,7 @@ import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.StringTokenizer;
 
-public class BOJ_tree_G2_12912 {
+public class BOJ_tree_G1_12912 {
 
     static class Edge {
         int from;
